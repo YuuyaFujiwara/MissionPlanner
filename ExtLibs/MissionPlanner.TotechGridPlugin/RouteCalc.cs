@@ -717,8 +717,7 @@ namespace totech
                     {
 #if true
                         // 線を分割せずにバッファに格納
-                        tang_line.get_p2().status = sts;
-                        rsltbuff.Add(tang_line.get_p2());
+                        rsltbuff.Add(tang_line.get_p2(), sts );
 #else
                         // 線を分割してバッファに格納
                         LineSplit(rsltbuff, tang_line, step, sts);
@@ -737,8 +736,7 @@ namespace totech
                         CircleSplit(rsltbuff, circle1, step, sts);
 #if true
                         // 線を分割せずにバッファに格納
-                        tang_line.get_p2().status = sts;
-                        rsltbuff.Add(tang_line.get_p2());
+                        rsltbuff.Add(tang_line.get_p2(), sts );
 #else
                         // 線を分割してバッファに格納
                         LineSplit(rsltbuff, tang_line, step, sts);

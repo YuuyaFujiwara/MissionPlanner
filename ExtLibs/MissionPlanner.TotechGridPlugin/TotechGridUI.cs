@@ -632,7 +632,9 @@ namespace MissionPlanner.TotechGrid
             {
                 // 原点基準で点を作ってOffsetする
                 PointLatLngAlt tmp_point = new PointLatLngAlt(org_point);
-                dest.Add(tmp_point.gps_offset(src[i].x, src[i].y));
+                tmp_point = tmp_point.gps_offset(src[i].x, src[i].y);
+                tmp_point.Tag2 = src[i].status.ToString();
+                dest.Add(tmp_point);
             }
 
 
@@ -1030,9 +1032,12 @@ namespace MissionPlanner.TotechGrid
 
 
 
-//「完了」ボタン 
-private void BUT_Accept_Click(object sender, EventArgs e)
+        //「完了」ボタン 
+        private void BUT_Accept_Click(object sender, EventArgs e)
         {
+            string tag2_bkup = "";
+
+
             if (grid != null && grid.Count > 0)
             {
                 MainV2.instance.FlightPlanner.quickadd = true;
@@ -1041,6 +1046,30 @@ private void BUT_Accept_Click(object sender, EventArgs e)
 
                 grid.ForEach(plla =>
                 {
+                    // 籾播き状態変化したなら、籾播き、籾送り制御
+                    // Ardupilot側修正により、MAV_CMD.USER_5にて籾播き制御
+                    if ( tag2_bkup != plla.Tag2 )
+                    {
+                        if( (plla.Tag2 == "START"   ) ||
+                            (plla.Tag2 == "BEGIN"   ) ||
+                            (plla.Tag2 == "R_TURN"  ) ||
+                            (plla.Tag2 == "L_TURN"  ) ||
+                            (plla.Tag2 == "RETURN"  ) )
+                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.USER_5, 1, 0, -1, -1, plla.Lng, plla.Lat, plla.Alt);// 拡散ON／送りOFF
+
+                        else if((plla.Tag2 == "STRAIGHT") ||
+                                (plla.Tag2 == "STRAIGHT2") )
+                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.USER_5, 1, 1, -1, -1, plla.Lng, plla.Lat, plla.Alt);// 拡散ON／送りON
+
+                        else if((plla.Tag2 == "END"         ) ||
+                                (plla.Tag2 == "OUTOFRANGE"  ) ||
+                                (plla.Tag2 == "UNDEFINED"   ))
+                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.USER_5, 1, 1, -1, -1, plla.Lng, plla.Lat, plla.Alt);// 拡散OFF／送りOFF
+
+                            tag2_bkup = plla.Tag2;
+                    }
+
+
                     if (plla.Tag == "M")
                     {
                         if (CHK_internals.Checked)
@@ -1068,6 +1097,7 @@ private void BUT_Accept_Click(object sender, EventArgs e)
                 CustomMessageBox.Show("Bad Grid", "Error");
             }
         }
+
 
         // ダイアログを開くボタン
         private void BUT_newDialog_Click(object sender, EventArgs e)

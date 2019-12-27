@@ -66,7 +66,7 @@ namespace totech
             // Vectorのコピー実行
             Capacity = (_end - _begin + 1);
             for (int i = _begin; i <= _end; i++)
-                Add(orig[i]);
+                Add(orig[i], orig[i].status );
 
             m_org_longlat = orig.m_org_longlat;
             m_ccw_rslt = 0;
@@ -87,7 +87,12 @@ namespace totech
         }
 #endif
 
-
+        // Status付きAdd
+        public void Add(Point2D tgt, totech.RouteStatus sts )
+        {
+            tgt.status = sts;
+            Add(tgt);
+        }
 
 
         // 原点緯度経度を設定する
