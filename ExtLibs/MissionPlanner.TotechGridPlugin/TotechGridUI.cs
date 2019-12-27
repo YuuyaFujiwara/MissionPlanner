@@ -724,13 +724,17 @@ namespace MissionPlanner.TotechGrid
             // (MP)Polygonファイル一覧 取得
             string search_path = Misc.GetFullPath(Consts.FieldShape_Path);
             string search_filter = Consts.FieldShape_Filter;
-            IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
-            foreach( string fname in files )
+            try
             {
-                List_LatLangAlt readbuff = new List_LatLangAlt(fname);
-                fieldShapes.Add(readbuff);
-                CMB_fieldshapes.Items.Add(readbuff.Title );
+                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
+                foreach (string fname in files)
+                {
+                    List_LatLangAlt readbuff = new List_LatLangAlt(fname);
+                    fieldShapes.Add(readbuff);
+                    CMB_fieldshapes.Items.Add(readbuff.Title);
+                }
             }
+            catch { }
 
         }
 
@@ -925,15 +929,19 @@ namespace MissionPlanner.TotechGrid
             // ルート（Waypoints）ファイル一覧 取得
             string search_path = Misc.GetFullPath(Consts.RouteFile_Path);
             string search_filter = Consts.RouteFile_Filter;
-            IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
-            foreach (string fname in files)
+            try
             {
-                List_LatLangAlt readbuff = new List_LatLangAlt(fname);
-                RouteWaypoints.Add(readbuff);
-                RouteFileNames.Add(fname);
-                CMB_RouteList.Items.Add(readbuff.Title);
-                 
+                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
+                foreach (string fname in files)
+                {
+                    List_LatLangAlt readbuff = new List_LatLangAlt(fname);
+                    RouteWaypoints.Add(readbuff);
+                    RouteFileNames.Add(fname);
+                    CMB_RouteList.Items.Add(readbuff.Title);
+
+                }
             }
+            catch { }
 
         }
 
@@ -1187,12 +1195,16 @@ private void BUT_Accept_Click(object sender, EventArgs e)
             // NMEAファイル一覧 取得
             string search_path = Misc.GetFullPath(Consts.GnssLog_Path);
             string search_filter = Consts.GnssLog_Filter;
-            IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
-            foreach (string fname in files)
+            try
             {
-                NmeaFileNames.Add(fname);
-                CMB_NmeaFiles.Items.Add(System.IO.Path.GetFileNameWithoutExtension(fname));
+                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
+                foreach (string fname in files)
+                {
+                    NmeaFileNames.Add(fname);
+                    CMB_NmeaFiles.Items.Add(System.IO.Path.GetFileNameWithoutExtension(fname));
+                }
             }
+            catch { }
 
         }
 
