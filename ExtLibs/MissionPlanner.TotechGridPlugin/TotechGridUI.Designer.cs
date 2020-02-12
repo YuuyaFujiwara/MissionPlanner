@@ -73,10 +73,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.CMB_RouteList = new System.Windows.Forms.ComboBox();
             this.TabRouteShape = new System.Windows.Forms.TabPage();
+            this.BUT_DeleteFieldShape = new MissionPlanner.Controls.MyButton();
             this.BUT_UpdateFieldShapeList = new MissionPlanner.Controls.MyButton();
             this.CMB_NmeaFiles = new System.Windows.Forms.ComboBox();
             this.myButton2 = new MissionPlanner.Controls.MyButton();
-            this.BUT_DeleteFieldShape = new MissionPlanner.Controls.MyButton();
+            this.BUT_Test1 = new MissionPlanner.Controls.MyButton();
+            this.BUT_Test2 = new MissionPlanner.Controls.MyButton();
             this.groupBox5.SuspendLayout();
             this.tabRouteCalc.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -171,6 +173,8 @@
             // 
             // tabRouteCalc
             // 
+            this.tabRouteCalc.Controls.Add(this.BUT_Test2);
+            this.tabRouteCalc.Controls.Add(this.BUT_Test1);
             this.tabRouteCalc.Controls.Add(this.BUT_newDialog);
             this.tabRouteCalc.Controls.Add(this.BUT_PolygonRead);
             this.tabRouteCalc.Controls.Add(this.groupBox6);
@@ -510,6 +514,12 @@
             this.TabRouteShape.Name = "TabRouteShape";
             this.TabRouteShape.UseVisualStyleBackColor = true;
             // 
+            // BUT_DeleteFieldShape
+            // 
+            resources.ApplyResources(this.BUT_DeleteFieldShape, "BUT_DeleteFieldShape");
+            this.BUT_DeleteFieldShape.Name = "BUT_DeleteFieldShape";
+            this.BUT_DeleteFieldShape.UseVisualStyleBackColor = true;
+            // 
             // BUT_UpdateFieldShapeList
             // 
             resources.ApplyResources(this.BUT_UpdateFieldShapeList, "BUT_UpdateFieldShapeList");
@@ -530,11 +540,19 @@
             this.myButton2.Name = "myButton2";
             this.myButton2.UseVisualStyleBackColor = true;
             // 
-            // BUT_DeleteFieldShape
+            // BUT_Test1
             // 
-            resources.ApplyResources(this.BUT_DeleteFieldShape, "BUT_DeleteFieldShape");
-            this.BUT_DeleteFieldShape.Name = "BUT_DeleteFieldShape";
-            this.BUT_DeleteFieldShape.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.BUT_Test1, "BUT_Test1");
+            this.BUT_Test1.Name = "BUT_Test1";
+            this.BUT_Test1.UseVisualStyleBackColor = true;
+            this.BUT_Test1.Click += new System.EventHandler(this.BUT_Test1_Click);
+            // 
+            // BUT_Test2
+            // 
+            resources.ApplyResources(this.BUT_Test2, "BUT_Test2");
+            this.BUT_Test2.Name = "BUT_Test2";
+            this.BUT_Test2.UseVisualStyleBackColor = true;
+            this.BUT_Test2.Click += new System.EventHandler(this.BUT_Test2_Click);
             // 
             // TotechGridUI
             // 
@@ -616,5 +634,7 @@
         private Controls.MyButton BUT_UpdateFieldShapeList;
         private System.Windows.Forms.ComboBox CMB_NmeaFiles;
         private Controls.MyButton myButton2;
+        private Controls.MyButton BUT_Test2;
+        private Controls.MyButton BUT_Test1;
     }
 }

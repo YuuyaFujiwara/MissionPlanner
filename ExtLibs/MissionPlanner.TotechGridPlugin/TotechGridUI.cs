@@ -11,6 +11,7 @@ using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using log4net;
+using MissionPlanner.ArduPilot;
 using MissionPlanner.Plugin;
 using MissionPlanner.Utilities;
 using ProjNet.CoordinateSystems;
@@ -1064,7 +1065,7 @@ namespace MissionPlanner.TotechGrid
                         else if((plla.Tag2 == "END"         ) ||
                                 (plla.Tag2 == "OUTOFRANGE"  ) ||
                                 (plla.Tag2 == "UNDEFINED"   ))
-                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.USER_5, 1, 1, -1, -1, plla.Lng, plla.Lat, plla.Alt);// 拡散OFF／送りOFF
+                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.USER_5, 0, 0, -1, -1, plla.Lng, plla.Lat, plla.Alt);// 拡散OFF／送りOFF
 
                             tag2_bkup = plla.Tag2;
                     }
@@ -1264,7 +1265,251 @@ namespace MissionPlanner.TotechGrid
         }
 
 
+
         #endregion "圃場形状UI"
+
+        private void BUT_Test1_Click(object sender, EventArgs e)
+        {
+            // パラメータ書いてみるテスト
+            MainV2.comPort.setParam("MOMIMAKI_RT_CTRL", (float)1);
+
+        }
+
+
+        private async void BUT_Test2_Click(object sender, EventArgs e)
+        {
+            //
+            // ルート送信するテスト
+            //
+
+
+            // get the command list from List<PointLatLngAlt>
+            List<Locationwp> commandlist = GetCommandList(grid);
+
+#if true
+            MAVLink.MAV_MISSION_TYPE type = MAVLink.MAV_MISSION_TYPE.MISSION;
+            await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, commandlist);
+#else
+            mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, commandlist,
+                (percent, status) =>
+                {
+                    if (sender.doWorkArgs.CancelRequested)
+                    {
+                        sender.doWorkArgs.CancelAcknowledged = true;
+                        sender.doWorkArgs.ErrorMessage = "User Canceled";
+                        throw new Exception("User Canceled");
+                    }
+
+                    sender.UpdateProgressAndStatus((int)(percent * 0.95), status);
+                }).ConfigureAwait(false).GetAwaiter().GetResult();
+#endif
+
+
+
+        }
+
+
+#if false
+        // ルートを機体に書き込み
+        // FlightPlanner.cs :: BUT_write_Click()より
+        /// <summary>
+        /// Writes the mission from the datagrid and values to the EEPROM
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void BUT_write_Click(object sender, EventArgs e)
+        {
+            if ((altmode)CMB_altmode.SelectedValue == altmode.Absolute)
+            {
+                if ((int)DialogResult.No ==
+                    CustomMessageBox.Show("Absolute Alt is selected are you sure?", "Alt Mode", MessageBoxButtons.YesNo))
+                {
+                    CMB_altmode.SelectedValue = (int)altmode.Relative;
+                }
+            }
+
+            // check home
+            Locationwp home = new Locationwp();
+            try
+            {
+                home.frame = (byte)MAVLink.MAV_FRAME.GLOBAL;
+                home.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+                home.lat = (double.Parse(TXT_homelat.Text));
+                home.lng = (double.Parse(TXT_homelng.Text));
+                home.alt = (float.Parse(TXT_homealt.Text) / CurrentState.multiplierdist); // use saved home
+            }
+            catch
+            {
+                CustomMessageBox.Show("Your home location is invalid", Strings.ERROR);
+                return;
+            }
+
+            // check for invalid grid data
+            for (int a = 0; a < Commands.Rows.Count - 0; a++)
+            {
+                for (int b = 0; b < Commands.ColumnCount - 0; b++)
+                {
+                    double answer;
+                    if (b >= 1 && b <= 7)
+                    {
+                        if (!double.TryParse(Commands[b, a].Value.ToString(), out answer))
+                        {
+                            CustomMessageBox.Show("There are errors in your mission");
+                            return;
+                        }
+                    }
+
+                    if (TXT_altwarn.Text == "") TXT_altwarn.Text = (0).ToString();
+
+                    if (Commands.Rows[a].Cells[Command.Index].Value.ToString().Contains("UNKNOWN"))
+                        continue;
+
+                    ushort cmd =
+                        (ushort)
+                        Enum.Parse(typeof(MAVLink.MAV_CMD), Commands.Rows[a].Cells[Command.Index].Value.ToString(), false);
+
+                    if (cmd < (ushort)MAVLink.MAV_CMD.LAST &&
+                        double.Parse(Commands[Alt.Index, a].Value.ToString()) < double.Parse(TXT_altwarn.Text))
+                    {
+                        if (cmd != (ushort)MAVLink.MAV_CMD.TAKEOFF &&
+                            cmd != (ushort)MAVLink.MAV_CMD.LAND &&
+                            cmd != (ushort)MAVLink.MAV_CMD.RETURN_TO_LAUNCH)
+                        {
+                            CustomMessageBox.Show("Low alt on WP#" + (a + 1) +
+                                                  "\nPlease reduce the alt warning, or increase the altitude");
+                            return;
+                        }
+                    }
+                }
+            }
+
+            IProgressReporterDialogue frmProgressReporter = new ProgressReporterDialogue
+            {
+                StartPosition = FormStartPosition.CenterScreen,
+                Text = "Sending WP's"
+            };
+
+            frmProgressReporter.DoWork += saveWPs;
+
+            frmProgressReporter.UpdateProgressAndStatus(-1, "Sending WP's");
+
+            ThemeManager.ApplyThemeTo(frmProgressReporter);
+
+            frmProgressReporter.RunBackgroundOperationAsync();
+
+            frmProgressReporter.Dispose();
+
+            MainMap.Focus();
+        }
+#endif
+
+
+
+
+
+
+        // ※ 参考：BUT_Accept_Click、FlightPlanner::GetCommandList
+        /// <summary>
+        /// ルートデータ変換(List<PointLatLngAlt => </PointLatLngAlt>)
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        private List<Locationwp> GetCommandList(List<PointLatLngAlt> grid)
+        {
+            List<Locationwp> locwps = new List<Locationwp>();
+
+            if (grid != null && grid.Count > 0)
+            {
+                //MainV2.instance.FlightPlanner.quickadd = true;
+
+                PointLatLngAlt lastpnt = PointLatLngAlt.Zero;
+
+                string tag2_bkup = "";
+
+                grid.ForEach(plla =>
+                {
+                    // 籾播き状態変化したなら、籾播き、籾送り制御
+                    // Ardupilot側修正により、MAV_CMD.USER_5にて籾播き制御
+                    if (tag2_bkup != plla.Tag2)
+                    {
+                        Locationwp tmp_wp = new Locationwp();
+                        tmp_wp.Set(plla.Lat, plla.Lng, plla.Alt, (ushort)MAVLink.MAV_CMD.USER_5);
+
+
+
+                        if ((plla.Tag2 == "START") ||
+                            (plla.Tag2 == "BEGIN") ||
+                            (plla.Tag2 == "R_TURN") ||
+                            (plla.Tag2 == "L_TURN") ||
+                            (plla.Tag2 == "RETURN"))
+                        {
+                            tmp_wp.p1 = 1;  // 拡散ON
+                            tmp_wp.p2 = 0;  // 送りOFF
+                            tmp_wp.p3 = -1; // 拡散速度指定 無し
+                            tmp_wp.p4 = -1; // 送り速度指定 無し
+                        }
+
+                        else if ((plla.Tag2 == "STRAIGHT") ||
+                                (plla.Tag2 == "STRAIGHT2"))
+                        {
+                            tmp_wp.p1 = 1;  // 拡散ON
+                            tmp_wp.p2 = 1;  // 送りON
+                            tmp_wp.p3 = -1; // 拡散速度指定 無し
+                            tmp_wp.p4 = -1; // 送り速度指定 無し
+                        }
+
+                        else if ((plla.Tag2 == "END") ||
+                                (plla.Tag2 == "OUTOFRANGE") ||
+                                (plla.Tag2 == "UNDEFINED"))
+                        {
+                            tmp_wp.p1 = 0;  // 拡散OFF
+                            tmp_wp.p2 = 0;  // 送りOFF
+                            tmp_wp.p3 = -1; // 拡散速度指定 無し
+                            tmp_wp.p4 = -1; // 送り速度指定 無し
+                        }
+
+                        tag2_bkup = plla.Tag2;
+                        // Listに追加
+                        locwps.Add(tmp_wp);
+
+                    }
+
+                    // WAYPOINTをリストに追加
+                    Locationwp tmp_wp2 = new Locationwp();
+                    tmp_wp2.Set(plla.Lat, plla.Lng, plla.Alt, (ushort)MAVLink.MAV_CMD.WAYPOINT);
+                    if (plla.Tag == "M")
+                    {
+                        if (CHK_internals.Checked)
+                        {
+                            // Listに追加
+                            locwps.Add(tmp_wp2);
+                        }
+                    }
+                    else
+                    {
+                        if (!(plla.Lat == lastpnt.Lat && plla.Lng == lastpnt.Lng && plla.Alt == lastpnt.Alt))
+                        {
+                            // Listに追加
+                            locwps.Add(tmp_wp2);
+                        }
+
+                        lastpnt = plla;
+                    }
+                });
+
+                //MainV2.instance.FlightPlanner.quickadd = false;
+
+                //MainV2.instance.FlightPlanner.writeKML();
+
+                //savesettings();
+
+                //this.Close();
+            }
+
+            return locwps;
+        }
+
+
 
 
     }
