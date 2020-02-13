@@ -34,7 +34,8 @@ namespace MissionPlanner.TotechGrid
         GMapOverlay layerpolygons;
         //GMapPolygon wppoly;
         private GridPlugin plugin;
-        List<PointLatLngAlt> grid;          // ルート演算結果
+        //List<PointLatLngAlt> grid;          // ルート演算結果
+        List<Locationwp> grid;          // ルート演算結果
 
         List<PointLatLngAlt> list = new List<PointLatLngAlt>();         // ポリゴン(圃場形状)
 
@@ -339,6 +340,38 @@ namespace MissionPlanner.TotechGrid
 #endif
         }
 
+
+        // 圃場形状またはルートの描画（描画バッファに格納する。)
+        // ルート：List<Locationwp>
+        void AddDrawPolygon(List<Locationwp> tgt, string name, Color draw_colow, int line_width)
+        {
+            // GMapPolygon型に変換
+            // 一度List<PointLatLng>を作成してからGMapPolygonを作成する
+            List<PointLatLng> work = new List<PointLatLng>();
+            //tgt.ForEach(x => { work.Add(new PointLatLng(x.lat, x.lng)); });// 下のforeachと同じ
+            foreach (Locationwp item in tgt)
+            {
+                work.Add(new PointLatLng(item.lat, item.lng));
+            }
+
+            var poly = new GMapPolygon(work, name);
+
+            poly.Stroke = new Pen(draw_colow, line_width);
+            poly.Fill = Brushes.Transparent;
+
+            layerpolygons.Polygons.Add(poly);
+
+#if false
+            // マーカーの描画
+            foreach (var item in tgt)
+            {
+                layerpolygons.Markers.Add(new GMarkerGoogle(item, GMarkerGoogleType.red));
+            }
+#endif
+        }
+
+
+        // ルートの距離演算（List<PointLatLngAlt>）
         double getDistanceOfRoute(List<PointLatLngAlt> tgt)
         {
             // GMapPolygon型に変換
@@ -347,10 +380,21 @@ namespace MissionPlanner.TotechGrid
             tgt.ForEach(x => { work.Add(x); });
             var poly = new GMapPolygon(work, "");
 
-            return poly.Distance; 
+            return poly.Distance;
         }
 
 
+        // ルートの距離演算（List<Locationwp>）
+        double getDistanceOfRoute(List<Locationwp> tgt)
+        {
+            // GMapPolygon型に変換
+            // 一度List<PointLatLng>を作成してからGMapPolygonを作成する
+            List<PointLatLng> work = new List<PointLatLng>();
+            tgt.ForEach(x => { work.Add( new PointLatLng(x.lat,x.lng)); });
+            var poly = new GMapPolygon(work, "");
+
+            return poly.Distance;
+        }
 
 
         double getAngleOfLongestSide(List<PointLatLngAlt> list)
@@ -386,7 +430,9 @@ namespace MissionPlanner.TotechGrid
             Host2 = plugin.Host;
 
             // ルート演算実行
-            grid = CreateTotechGrid(list);
+
+            List<PointLatLngAlt> tmproute = CreateTotechGrid(list);
+            grid = RouteToCommandList(tmproute);
 
             // 形状/ルート 再描画
             ReDraw();
@@ -732,9 +778,16 @@ namespace MissionPlanner.TotechGrid
                 IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
                 foreach (string fname in files)
                 {
+#if false
                     List_LatLangAlt readbuff = new List_LatLangAlt(fname);
                     fieldShapes.Add(readbuff);
                     CMB_fieldshapes.Items.Add(readbuff.Title);
+#else
+                    List<PointLatLngAlt> readbuff = Load_FieldShape_from_file(fname);
+                    fieldShapes.Add(readbuff);
+                    string title = System.IO.Path.GetFileNameWithoutExtension(fname);
+                    CMB_fieldshapes.Items.Add(title);
+#endif
                 }
             }
             catch { }
@@ -899,7 +952,7 @@ namespace MissionPlanner.TotechGrid
             return data_buff;
         }
 
-        #endregion "圃場形状（ポリゴン）ファイル取扱"
+#endregion "圃場形状（ポリゴン）ファイル取扱"
 
 
 
@@ -912,9 +965,10 @@ namespace MissionPlanner.TotechGrid
 
         }
 
-        #region "ルート（Waypoints）ファイル取扱い"
+#region "ルート（Waypoints）ファイル取扱い"
         // ルート（Waypoints）一覧
-        List<List<PointLatLngAlt>> RouteWaypoints = new List<List<PointLatLngAlt>>();
+        // List<List<PointLatLngAlt>> RouteWaypoints = new List<List<PointLatLngAlt>>();
+        List<List<Locationwp>> RouteWaypoints = new List<List<Locationwp>>();
         List<string> RouteFileNames = new List<string>();
         // 圃場形状（ポリゴン）一覧を更新する。
         private void Update_RouteWaypoints()
@@ -931,10 +985,11 @@ namespace MissionPlanner.TotechGrid
                 IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
                 foreach (string fname in files)
                 {
-                    List_LatLangAlt readbuff = new List_LatLangAlt(fname);
+                    List<Locationwp> readbuff = Load_Waypoints_to_file(fname);
                     RouteWaypoints.Add(readbuff);
                     RouteFileNames.Add(fname);
-                    CMB_RouteList.Items.Add(readbuff.Title);
+                    string title = System.IO.Path.GetFileNameWithoutExtension(fname);
+                    CMB_RouteList.Items.Add(title);
 
                 }
             }
@@ -945,10 +1000,10 @@ namespace MissionPlanner.TotechGrid
 
 
 
-        #endregion "ルート（Waypoints）ファイル取扱い"
+#endregion "ルート（Waypoints）ファイル取扱い"
 
 
-        #region "圃場形状作成"
+#region "圃場形状作成"
 
         //*****************************************************************
         // 圃場形状を作成する
@@ -979,10 +1034,10 @@ namespace MissionPlanner.TotechGrid
 
 
             // 単純化する
-        #if false
+#if false
             // 精度　0.5ｍ
             tPolygon dest_polygon1 = GeomUtils::simplifyWithRDP( target_polygon, 1.0 );
-        #else
+#else
             // ポリゴンを単純化する
             //   1) Ramer–Douglas–Peuckerアルゴリズムにより単純化
             //   2) 縮小→拡大により余計な線を除去する
@@ -1028,8 +1083,9 @@ namespace MissionPlanner.TotechGrid
 
 
         //「完了」ボタン 
-        private void BUT_Accept_Click(object sender, EventArgs e)
+        private async void BUT_Accept_Click(object sender, EventArgs e)
         {
+#if false
             string tag2_bkup = "";
 
 
@@ -1038,6 +1094,7 @@ namespace MissionPlanner.TotechGrid
                 MainV2.instance.FlightPlanner.quickadd = true;
 
                 PointLatLngAlt lastpnt = PointLatLngAlt.Zero;
+
 
                 grid.ForEach(plla =>
                 {
@@ -1078,6 +1135,28 @@ namespace MissionPlanner.TotechGrid
                         lastpnt = plla;
                     }
                 });
+                            MainV2.instance.FlightPlanner.quickadd = false;
+
+                MainV2.instance.FlightPlanner.writeKML();
+
+                savesettings();
+
+                this.Close();
+            }
+            else
+            {
+                CustomMessageBox.Show("Bad Grid", "Error");
+            }
+#else
+            if (grid != null && grid.Count > 0)
+            {
+                MainV2.instance.FlightPlanner.quickadd = true;
+
+                // MissionPlannerに登録。
+                grid.ForEach(item =>
+                {
+                    plugin.Host.AddWPtoList((MAVLink.MAV_CMD)(item.id), (double)item.p1, item.p2, item.p3, item.p4, item.lng, item.lat, item.alt);
+                });
 
                 MainV2.instance.FlightPlanner.quickadd = false;
 
@@ -1091,6 +1170,7 @@ namespace MissionPlanner.TotechGrid
             {
                 CustomMessageBox.Show("Bad Grid", "Error");
             }
+#endif
         }
 
 
@@ -1150,8 +1230,8 @@ namespace MissionPlanner.TotechGrid
                 return;
 
             // ルートの始点LatLang
-            double lat = grid[0].Lat;
-            double lng = grid[0].Lng;
+            double lat = grid[0].lat;
+            double lng = grid[0].lng;
 
 
             // 開始地点の緯度経度からファイル名を決める
@@ -1159,7 +1239,8 @@ namespace MissionPlanner.TotechGrid
             fname = Misc.GetFullPath( Consts.RouteFile_Path + "/" + fname);
 
             // 保存実行
-            Save_Polygon_to_file(grid, fname);
+            //Save_Polygon_to_file(grid, fname);
+            Save_Waypoints_to_file(grid, fname);
 
         }
 
@@ -1207,7 +1288,7 @@ namespace MissionPlanner.TotechGrid
 
         }
 
-        #region "圃場形状UI"
+#region "圃場形状UI"
 
         // NMEAファイル一覧
         List<string> NmeaFileNames = new List<string>();
@@ -1260,7 +1341,7 @@ namespace MissionPlanner.TotechGrid
 
 
 
-        #endregion "圃場形状UI"
+#endregion "圃場形状UI"
 
         private void BUT_Test1_Click(object sender, EventArgs e)
         {
@@ -1278,11 +1359,11 @@ namespace MissionPlanner.TotechGrid
 
 
             // get the command list from List<PointLatLngAlt>
-            List<Locationwp> commandlist = GetCommandList(grid);
+            //List<Locationwp> commandlist = RouteToCommandList(grid);
 
 #if true
             MAVLink.MAV_MISSION_TYPE type = MAVLink.MAV_MISSION_TYPE.MISSION;
-            await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, commandlist);
+            await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, grid);
 #else
             mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, commandlist,
                 (percent, status) =>
@@ -1408,7 +1489,7 @@ namespace MissionPlanner.TotechGrid
         /// </summary>
         /// <returns></returns>
         /// 
-        private List<Locationwp> GetCommandList(List<PointLatLngAlt> grid)
+        private List<Locationwp> RouteToCommandList(List<PointLatLngAlt> grid)
         {
             List<Locationwp> locwps = new List<Locationwp>();
 
