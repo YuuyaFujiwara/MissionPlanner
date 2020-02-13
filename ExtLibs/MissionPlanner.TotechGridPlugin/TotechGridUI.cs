@@ -516,7 +516,9 @@ namespace MissionPlanner.TotechGrid
             if ( current_shape.Count >  0 )
                 map.ZoomAndCenterMarkers("polygons");
             else
-                map.ZoomAndCenterRoutes("polygons");
+                map.ZoomAndCenterMarkers("poly");
+            map.ZoomAndCenterRoutes("poly");
+            //            map.ZoomAndCenterRoutes("polygons");
 
             map.HoldInvalidation = false;    //
             map.Refresh();
@@ -895,6 +897,8 @@ namespace MissionPlanner.TotechGrid
                         // item._seq
                         // item.frame
                         // item.Tag
+
+                        sw.WriteLine();
                     }
                 }
 
