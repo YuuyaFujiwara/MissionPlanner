@@ -1174,18 +1174,6 @@ namespace MissionPlanner.TotechGrid
         }
 
 
-        // ダイアログを開くボタン
-        private void BUT_newDialog_Click(object sender, EventArgs e)
-        {
-            // 圃場形状読み出しダイアログ開く
-            using (Form polui = new PolygonReadUI(this.plugin))
-            {
-                MissionPlanner.Utilities.ThemeManager.ApplyThemeTo(polui);
-                polui.ShowDialog();
-            }
-
-        }
-
         // 圃場形状コンボボックス選択
         private void CMB_fieldshapes_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -42,7 +42,6 @@
             this.tabRouteCalc = new System.Windows.Forms.TabPage();
             this.BUT_Test2 = new MissionPlanner.Controls.MyButton();
             this.BUT_Test1 = new MissionPlanner.Controls.MyButton();
-            this.BUT_newDialog = new MissionPlanner.Controls.MyButton();
             this.BUT_PolygonRead = new MissionPlanner.Controls.MyButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -175,7 +174,6 @@
             // 
             this.tabRouteCalc.Controls.Add(this.BUT_Test2);
             this.tabRouteCalc.Controls.Add(this.BUT_Test1);
-            this.tabRouteCalc.Controls.Add(this.BUT_newDialog);
             this.tabRouteCalc.Controls.Add(this.BUT_PolygonRead);
             this.tabRouteCalc.Controls.Add(this.groupBox6);
             this.tabRouteCalc.Controls.Add(this.groupBox4);
@@ -199,13 +197,6 @@
             this.BUT_Test1.Name = "BUT_Test1";
             this.BUT_Test1.UseVisualStyleBackColor = true;
             this.BUT_Test1.Click += new System.EventHandler(this.BUT_Test1_Click);
-            // 
-            // BUT_newDialog
-            // 
-            resources.ApplyResources(this.BUT_newDialog, "BUT_newDialog");
-            this.BUT_newDialog.Name = "BUT_newDialog";
-            this.BUT_newDialog.UseVisualStyleBackColor = true;
-            this.BUT_newDialog.Click += new System.EventHandler(this.BUT_newDialog_Click);
             // 
             // BUT_PolygonRead
             // 
@@ -617,7 +608,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown NUM_divide_step;
         private Controls.MyButton BUT_PolygonRead;
-        private Controls.MyButton BUT_newDialog;
         private System.Windows.Forms.ComboBox CMB_fieldshapes;
         private Controls.MyButton BUT_StartNext;
         private Controls.MyButton BUT_StartPrev;
