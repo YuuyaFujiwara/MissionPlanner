@@ -213,6 +213,19 @@ namespace totech
             return !( v == w );
         }
 
+        public override bool Equals(object obj)
+        {
+            //objがnullか、型が違うときは、等価でない
+            if (obj == null || this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            return this == (Point2D)obj;
+
+        }
+
+
 
         // ベクトルのサイズ
         public double norm() 
@@ -472,6 +485,20 @@ namespace totech
         {
             return !( v1 == v2 );
         }
+
+        public override bool Equals(object obj)
+        {
+            //objがnullか、型が違うときは、等価でない
+            if (obj == null || this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            return this == (tLine)obj;
+
+        }
+
+
 
         public static tLine operator +(tLine v1, Point2D v2)    //tLine+vector
         {
