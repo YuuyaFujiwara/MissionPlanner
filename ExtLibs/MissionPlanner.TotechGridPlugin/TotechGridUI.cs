@@ -771,49 +771,6 @@ namespace MissionPlanner.TotechGrid
 
 
 
-#if false
-        private void savePolygonToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (drawnpolygon.Points.Count == 0)
-            {
-                return;
-            }
-
-
-            using (SaveFileDialog sf = new SaveFileDialog())
-            {
-                sf.Filter = "Polygon (*.poly)|*.poly";
-                var result = sf.ShowDialog();
-                if (sf.FileName != "" && result == DialogResult.OK)
-                {
-                    try
-                    {
-                        StreamWriter sw = new StreamWriter(sf.OpenFile());
-
-                        sw.WriteLine("#saved by Mission Planner " + Application.ProductVersion);
-
-                        if (drawnpolygon.Points.Count > 0)
-                        {
-                            foreach (var pll in drawnpolygon.Points)
-                            {
-                                sw.WriteLine(pll.Lat.ToString(CultureInfo.InvariantCulture) + " " + pll.Lng.ToString(CultureInfo.InvariantCulture));
-                            }
-
-                            PointLatLng pll2 = drawnpolygon.Points[0];
-
-                            sw.WriteLine(pll2.Lat.ToString(CultureInfo.InvariantCulture) + " " + pll2.Lng.ToString(CultureInfo.InvariantCulture));
-                        }
-
-                        sw.Close();
-                    }
-                    catch
-                    {
-                        CustomMessageBox.Show("Failed to write fence file");
-                    }
-                }
-            }
-        }
-#endif
 
         // ファイルから圃場形状（MPのポリゴン）を読み込む
         // original : FlightPlanner.cs::loadPolygonToolStripMenuItem_Click()
@@ -850,73 +807,110 @@ namespace MissionPlanner.TotechGrid
         }
 
 
-#if false
-        
-        //private void loadPolygonToolStripMenuItem_Click(object sender, EventArgs e)
+        // ルート（List<Locationwp>）をファイルに書き込む
+        // MissionPlanner標準の保存フォーマットと異なるので注意
+        // 
+        // original : FlightPlanner.cs::savewaypoints()
+        private void Save_Waypoints_to_file(List<Locationwp> src_data, string filename)
         {
-            using (OpenFileDialog fd = new OpenFileDialog())
+            Misc.CreateDirectory_of_Filename(filename);
+
+            using (StreamWriter sw = new StreamWriter(filename))
             {
-                fd.Filter = "Polygon (*.poly)|*.poly";
-                fd.ShowDialog();
-                if (File.Exists(fd.FileName))
+                sw.WriteLine("#saved by TotechGrid in MissionPlanner " + Application.ProductVersion);
+
+                if (src_data.Count > 0)
                 {
-                    StreamReader sr = new StreamReader(fd.OpenFile());
+                    // 1行目：MissionPlanner標準だとHomeLocationが保存されるが、ダミーを保存する。
+                    sw.WriteLine("0\t1\t0\t0\t0\t0\t0\t0\t0\t0\t0\t1");
 
-                    drawnpolygonsoverlay.Markers.Clear();
-                    drawnpolygonsoverlay.Polygons.Clear();
-                    drawnpolygon.Points.Clear();
 
-                    int a = 0;
-
-                    while (!sr.EndOfStream)
+                    int a = 0;  //count
+                    foreach (var item in src_data)
                     {
-                        string line = sr.ReadLine();
-                        if (line.StartsWith("#"))
-                        {
-                        }
-                        else
-                        {
-                            string[] items = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                        sw.Write((++a)); // seq
+                        sw.Write("\t" + item.id);
+                        sw.Write("\t" + item.p1.ToString("0.00000000"));
+                        sw.Write("\t" + item.p2.ToString("0.00000000"));
+                        sw.Write("\t" + item.p3.ToString("0.00000000"));
+                        sw.Write("\t" + item.p4.ToString("0.00000000"));
+                        sw.Write("\t" + item.lat.ToString("0.00000000"));
+                        sw.Write("\t" + item.lng.ToString("0.00000000"));
+                        sw.Write("\t" + item.alt.ToString("0.00000000"));
 
-                            if (items.Length < 2)
-                                continue;
-
-                            drawnpolygon.Points.Add(new PointLatLng(
-                                double.Parse(items[0], CultureInfo.InvariantCulture),
-                                double.Parse(items[1], CultureInfo.InvariantCulture)));
-                            addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
-                                double.Parse(items[1], CultureInfo.InvariantCulture),
-                                double.Parse(items[0], CultureInfo.InvariantCulture), 0);
-
-                            a++;
-                        }
+                        // 以下、とりあえず保存しない
+                        // item._seq
+                        // item.frame
+                        // item.Tag
                     }
-
-                    // remove loop close
-                    if (drawnpolygon.Points.Count > 1 &&
-                        drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
-                    {
-                        drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1);
-                    }
-
-                    drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
-
-                    MainMap.UpdatePolygonLocalPosition(drawnpolygon);
-
-                    MainMap.Invalidate();
-
-                    MainMap.ZoomAndCenterMarkers(drawnpolygonsoverlay.Id);
                 }
+
+                sw.Close();
             }
         }
-#endif
+
+
+        // ファイルからルート（List<Locationwp>）を読み出す
+        // MissionPlanner標準の保存フォーマットと異なるので注意
+        // 
+        private List<Locationwp> Load_Waypoints_to_file( string filename)
+        {
+            List<Locationwp> data_buff = new List<Locationwp>();
+
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string line = sr.ReadLine();
+                    if (line.StartsWith("#"))
+                    {
+                    }
+                    else
+                    {
+                        //string[] items = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] ary = line.Split(new[] { '\t' } );
+
+                        try
+                        {
+                            // HomeLocationは読み飛ばす
+                            if( ary[0] == "0") continue;
+
+                            Locationwp tmp = new Locationwp();
+
+                            tmp.id  = ushort.Parse(ary[1]);
+                            tmp.p1  =  float.Parse(ary[2]);
+                            tmp.p2  =  float.Parse(ary[3]);
+                            tmp.p3  =  float.Parse(ary[4]);
+                            tmp.p4  =  float.Parse(ary[5]);
+                            tmp.lat = double.Parse(ary[6]);
+                            tmp.lng = double.Parse(ary[7]);
+                            tmp.alt =  float.Parse(ary[8]);
+
+                            data_buff.Add(tmp);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+                sr.Close();
+            }
+
+            return data_buff;
+        }
+
+        #endregion "圃場形状（ポリゴン）ファイル取扱"
+
+
+
+
+
 
         // 圃場形状読み出しボタン
         private void BUT_PolygonRead_Click(object sender, EventArgs e)
         {
 
         }
-        #endregion "圃場形状（ポリゴン）ファイル取扱"
 
         #region "ルート（Waypoints）ファイル取扱い"
         // ルート（Waypoints）一覧
