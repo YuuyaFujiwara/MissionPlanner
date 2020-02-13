@@ -12,8 +12,10 @@ namespace totech
     public class Consts
     {
         // 圃場形状一覧
+        //public const string FieldShape_Format = "{0}.shapes";
         public const string FieldShape_Path = "./Shapes";
-        public const string FieldShape_Filter = "*.shapes";
+        //public const string FieldShape_Filter = "*.shapes";
+        public const string FieldShape_Ext = "shapes";
 
         // ルートファイル一覧
         public const string RouteFile_Path = "./Routes/tmp";

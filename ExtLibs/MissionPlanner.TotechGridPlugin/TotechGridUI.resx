@@ -144,6 +144,129 @@
   <data name="&gt;&gt;map.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;lbl_distbetweenlines.Name" xml:space="preserve">
+    <value>lbl_distbetweenlines</value>
+  </data>
+  <data name="&gt;&gt;lbl_distbetweenlines.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_distbetweenlines.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lbl_distbetweenlines.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
+  </data>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Name" xml:space="preserve">
+    <value>lbl_strips</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label33.Name" xml:space="preserve">
+    <value>label33</value>
+  </data>
+  <data name="&gt;&gt;label33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lbl_distance.Name" xml:space="preserve">
+    <value>lbl_distance</value>
+  </data>
+  <data name="&gt;&gt;lbl_distance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_distance.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lbl_distance.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lbl_area.Name" xml:space="preserve">
+    <value>lbl_area</value>
+  </data>
+  <data name="&gt;&gt;lbl_area.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_area.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lbl_area.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 457</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>755, 80</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Stats</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="lbl_distbetweenlines.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -360,32 +483,140 @@
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="groupBox5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="&gt;&gt;BUT_Test2.Name" xml:space="preserve">
+    <value>BUT_Test2</value>
   </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 457</value>
+  <data name="&gt;&gt;BUT_Test2.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>755, 80</value>
+  <data name="&gt;&gt;BUT_Test2.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
   </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+  <data name="&gt;&gt;BUT_Test2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Stats</value>
+  <data name="&gt;&gt;BUT_Test1.Name" xml:space="preserve">
+    <value>BUT_Test1</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
+  <data name="&gt;&gt;BUT_Test1.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+  <data name="&gt;&gt;BUT_Test1.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;BUT_Test1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BUT_newDialog.Name" xml:space="preserve">
+    <value>BUT_newDialog</value>
+  </data>
+  <data name="&gt;&gt;BUT_newDialog.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_newDialog.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;BUT_newDialog.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;BUT_PolygonRead.Name" xml:space="preserve">
+    <value>BUT_PolygonRead</value>
+  </data>
+  <data name="&gt;&gt;BUT_PolygonRead.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_PolygonRead.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;BUT_PolygonRead.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
   </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;CMB_fieldshapes.Name" xml:space="preserve">
+    <value>CMB_fieldshapes</value>
+  </data>
+  <data name="&gt;&gt;CMB_fieldshapes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CMB_fieldshapes.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;CMB_fieldshapes.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;BUT_SaveRoute.Name" xml:space="preserve">
+    <value>BUT_SaveRoute</value>
+  </data>
+  <data name="&gt;&gt;BUT_SaveRoute.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_SaveRoute.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;BUT_SaveRoute.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;BUT_Accept.Name" xml:space="preserve">
+    <value>BUT_Accept</value>
+  </data>
+  <data name="&gt;&gt;BUT_Accept.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_Accept.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;BUT_Accept.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tabRouteCalc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabRouteCalc.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabRouteCalc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 511</value>
+  </data>
+  <data name="tabRouteCalc.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabRouteCalc.Text" xml:space="preserve">
+    <value>ルート演算</value>
+  </data>
+  <data name="&gt;&gt;tabRouteCalc.Name" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;tabRouteCalc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabRouteCalc.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabRouteCalc.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="BUT_Test2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -495,6 +726,231 @@
   <data name="&gt;&gt;BUT_PolygonRead.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;BUT_reverse.Name" xml:space="preserve">
+    <value>BUT_reverse</value>
+  </data>
+  <data name="&gt;&gt;BUT_reverse.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_reverse.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;BUT_reverse.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BUT_StartNext.Name" xml:space="preserve">
+    <value>BUT_StartNext</value>
+  </data>
+  <data name="&gt;&gt;BUT_StartNext.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_StartNext.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;BUT_StartNext.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;BUT_StartPrev.Name" xml:space="preserve">
+    <value>BUT_StartPrev</value>
+  </data>
+  <data name="&gt;&gt;BUT_StartPrev.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_StartPrev.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;BUT_StartPrev.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;NUM_divide_step.Name" xml:space="preserve">
+    <value>NUM_divide_step</value>
+  </data>
+  <data name="&gt;&gt;NUM_divide_step.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NUM_divide_step.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;NUM_divide_step.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;NUM_margin.Name" xml:space="preserve">
+    <value>NUM_margin</value>
+  </data>
+  <data name="&gt;&gt;NUM_margin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NUM_margin.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;NUM_margin.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;NUM_Distance.Name" xml:space="preserve">
+    <value>NUM_Distance</value>
+  </data>
+  <data name="&gt;&gt;NUM_Distance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NUM_Distance.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;NUM_Distance.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;NUM_uav_radius.Name" xml:space="preserve">
+    <value>NUM_uav_radius</value>
+  </data>
+  <data name="&gt;&gt;NUM_uav_radius.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NUM_uav_radius.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;NUM_uav_radius.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 265</value>
+  </data>
+  <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>Simple Options</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+    <value>tabRouteCalc</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;RBT_Spiral.Name" xml:space="preserve">
+    <value>RBT_Spiral</value>
+  </data>
+  <data name="&gt;&gt;RBT_Spiral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RBT_Spiral.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;RBT_Spiral.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;RBT_Zigzag.Name" xml:space="preserve">
+    <value>RBT_Zigzag</value>
+  </data>
+  <data name="&gt;&gt;RBT_Zigzag.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RBT_Zigzag.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;RBT_Zigzag.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 207</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 36</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="RBT_Spiral.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -554,27 +1010,6 @@
   </data>
   <data name="&gt;&gt;RBT_Zigzag.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 207</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 36</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>groupBox6</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="BUT_reverse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -891,29 +1326,77 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+  <data name="&gt;&gt;CHK_internals.Name" xml:space="preserve">
+    <value>CHK_internals</value>
   </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 265</value>
+  <data name="&gt;&gt;CHK_internals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
+  <data name="&gt;&gt;CHK_internals.Parent" xml:space="preserve">
+    <value>groupBox4</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>Simple Options</value>
+  <data name="&gt;&gt;CHK_internals.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
-    <value>groupBox6</value>
+  <data name="&gt;&gt;chk_grid.Name" xml:space="preserve">
+    <value>chk_grid</value>
   </data>
-  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+  <data name="&gt;&gt;chk_grid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chk_grid.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;chk_grid.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chk_markers.Name" xml:space="preserve">
+    <value>chk_markers</value>
+  </data>
+  <data name="&gt;&gt;chk_markers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chk_markers.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;chk_markers.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;chk_boundary.Name" xml:space="preserve">
+    <value>chk_boundary</value>
+  </data>
+  <data name="&gt;&gt;chk_boundary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chk_boundary.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;chk_boundary.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 370</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 87</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
     <value>tabRouteCalc</value>
   </data>
-  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="CHK_internals.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1035,30 +1518,6 @@
   <data name="&gt;&gt;chk_boundary.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 370</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 87</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Display</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>tabRouteCalc</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="CMB_fieldshapes.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 306</value>
   </data>
@@ -1134,48 +1593,6 @@
   <data name="&gt;&gt;BUT_Accept.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="tabRouteCalc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabRouteCalc.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabRouteCalc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 511</value>
-  </data>
-  <data name="tabRouteCalc.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabRouteCalc.Text" xml:space="preserve">
-    <value>ルート演算</value>
-  </data>
-  <data name="&gt;&gt;tabRouteCalc.Name" xml:space="preserve">
-    <value>tabRouteCalc</value>
-  </data>
-  <data name="&gt;&gt;tabRouteCalc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabRouteCalc.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabRouteCalc.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="BUT_RouteDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="BUT_RouteDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 182</value>
-  </data>
-  <data name="BUT_RouteDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 23</value>
-  </data>
-  <data name="BUT_RouteDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="BUT_RouteDelete.Text" xml:space="preserve">
-    <value>削除</value>
-  </data>
   <data name="&gt;&gt;BUT_RouteDelete.Name" xml:space="preserve">
     <value>BUT_RouteDelete</value>
   </data>
@@ -1187,21 +1604,6 @@
   </data>
   <data name="&gt;&gt;BUT_RouteDelete.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="BUT_RouteList_Update.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="BUT_RouteList_Update.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 119</value>
-  </data>
-  <data name="BUT_RouteList_Update.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 23</value>
-  </data>
-  <data name="BUT_RouteList_Update.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="BUT_RouteList_Update.Text" xml:space="preserve">
-    <value>ルート一覧更新</value>
   </data>
   <data name="&gt;&gt;BUT_RouteList_Update.Name" xml:space="preserve">
     <value>BUT_RouteList_Update</value>
@@ -1215,24 +1617,6 @@
   <data name="&gt;&gt;BUT_RouteList_Update.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 167</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 12</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>ルート 一覧</value>
-  </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
@@ -1244,15 +1628,6 @@
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="CMB_RouteList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 182</value>
-  </data>
-  <data name="CMB_RouteList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 20</value>
-  </data>
-  <data name="CMB_RouteList.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
   </data>
   <data name="&gt;&gt;CMB_RouteList.Name" xml:space="preserve">
     <value>CMB_RouteList</value>
@@ -1368,31 +1743,31 @@
   <data name="&gt;&gt;CMB_NmeaFiles.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="myButton2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="BUT_ShapeSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="myButton2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="BUT_ShapeSave.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 167</value>
   </data>
-  <data name="myButton2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BUT_ShapeSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 23</value>
   </data>
-  <data name="myButton2.TabIndex" type="System.Int32, mscorlib">
+  <data name="BUT_ShapeSave.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
   </data>
-  <data name="myButton2.Text" xml:space="preserve">
+  <data name="BUT_ShapeSave.Text" xml:space="preserve">
     <value>保存</value>
   </data>
-  <data name="&gt;&gt;myButton2.Name" xml:space="preserve">
-    <value>myButton2</value>
+  <data name="&gt;&gt;BUT_ShapeSave.Name" xml:space="preserve">
+    <value>BUT_ShapeSave</value>
   </data>
-  <data name="&gt;&gt;myButton2.Type" xml:space="preserve">
+  <data name="&gt;&gt;BUT_ShapeSave.Type" xml:space="preserve">
     <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;myButton2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BUT_ShapeSave.Parent" xml:space="preserve">
     <value>TabRouteShape</value>
   </data>
-  <data name="&gt;&gt;myButton2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BUT_ShapeSave.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="TabRouteShape.Location" type="System.Drawing.Point, System.Drawing">
@@ -1442,6 +1817,111 @@
   </data>
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="BUT_RouteDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_RouteDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 182</value>
+  </data>
+  <data name="BUT_RouteDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 23</value>
+  </data>
+  <data name="BUT_RouteDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="BUT_RouteDelete.Text" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="&gt;&gt;BUT_RouteDelete.Name" xml:space="preserve">
+    <value>BUT_RouteDelete</value>
+  </data>
+  <data name="&gt;&gt;BUT_RouteDelete.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_RouteDelete.Parent" xml:space="preserve">
+    <value>tabRouteManage</value>
+  </data>
+  <data name="&gt;&gt;BUT_RouteDelete.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BUT_RouteList_Update.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_RouteList_Update.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 119</value>
+  </data>
+  <data name="BUT_RouteList_Update.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 23</value>
+  </data>
+  <data name="BUT_RouteList_Update.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="BUT_RouteList_Update.Text" xml:space="preserve">
+    <value>ルート一覧更新</value>
+  </data>
+  <data name="&gt;&gt;BUT_RouteList_Update.Name" xml:space="preserve">
+    <value>BUT_RouteList_Update</value>
+  </data>
+  <data name="&gt;&gt;BUT_RouteList_Update.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BUT_RouteList_Update.Parent" xml:space="preserve">
+    <value>tabRouteManage</value>
+  </data>
+  <data name="&gt;&gt;BUT_RouteList_Update.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 167</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 12</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>ルート 一覧</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabRouteManage</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CMB_RouteList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 182</value>
+  </data>
+  <data name="CMB_RouteList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 20</value>
+  </data>
+  <data name="CMB_RouteList.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;CMB_RouteList.Name" xml:space="preserve">
+    <value>CMB_RouteList</value>
+  </data>
+  <data name="&gt;&gt;CMB_RouteList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CMB_RouteList.Parent" xml:space="preserve">
+    <value>tabRouteManage</value>
+  </data>
+  <data name="&gt;&gt;CMB_RouteList.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

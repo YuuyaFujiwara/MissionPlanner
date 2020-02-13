@@ -40,6 +40,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.tabRouteCalc = new System.Windows.Forms.TabPage();
+            this.BUT_Test2 = new MissionPlanner.Controls.MyButton();
+            this.BUT_Test1 = new MissionPlanner.Controls.MyButton();
             this.BUT_newDialog = new MissionPlanner.Controls.MyButton();
             this.BUT_PolygonRead = new MissionPlanner.Controls.MyButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -76,9 +78,7 @@
             this.BUT_DeleteFieldShape = new MissionPlanner.Controls.MyButton();
             this.BUT_UpdateFieldShapeList = new MissionPlanner.Controls.MyButton();
             this.CMB_NmeaFiles = new System.Windows.Forms.ComboBox();
-            this.myButton2 = new MissionPlanner.Controls.MyButton();
-            this.BUT_Test1 = new MissionPlanner.Controls.MyButton();
-            this.BUT_Test2 = new MissionPlanner.Controls.MyButton();
+            this.BUT_ShapeSave = new MissionPlanner.Controls.MyButton();
             this.groupBox5.SuspendLayout();
             this.tabRouteCalc.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -185,6 +185,20 @@
             resources.ApplyResources(this.tabRouteCalc, "tabRouteCalc");
             this.tabRouteCalc.Name = "tabRouteCalc";
             this.tabRouteCalc.UseVisualStyleBackColor = true;
+            // 
+            // BUT_Test2
+            // 
+            resources.ApplyResources(this.BUT_Test2, "BUT_Test2");
+            this.BUT_Test2.Name = "BUT_Test2";
+            this.BUT_Test2.UseVisualStyleBackColor = true;
+            this.BUT_Test2.Click += new System.EventHandler(this.BUT_Test2_Click);
+            // 
+            // BUT_Test1
+            // 
+            resources.ApplyResources(this.BUT_Test1, "BUT_Test1");
+            this.BUT_Test1.Name = "BUT_Test1";
+            this.BUT_Test1.UseVisualStyleBackColor = true;
+            this.BUT_Test1.Click += new System.EventHandler(this.BUT_Test1_Click);
             // 
             // BUT_newDialog
             // 
@@ -509,7 +523,7 @@
             this.TabRouteShape.Controls.Add(this.BUT_DeleteFieldShape);
             this.TabRouteShape.Controls.Add(this.BUT_UpdateFieldShapeList);
             this.TabRouteShape.Controls.Add(this.CMB_NmeaFiles);
-            this.TabRouteShape.Controls.Add(this.myButton2);
+            this.TabRouteShape.Controls.Add(this.BUT_ShapeSave);
             resources.ApplyResources(this.TabRouteShape, "TabRouteShape");
             this.TabRouteShape.Name = "TabRouteShape";
             this.TabRouteShape.UseVisualStyleBackColor = true;
@@ -519,6 +533,7 @@
             resources.ApplyResources(this.BUT_DeleteFieldShape, "BUT_DeleteFieldShape");
             this.BUT_DeleteFieldShape.Name = "BUT_DeleteFieldShape";
             this.BUT_DeleteFieldShape.UseVisualStyleBackColor = true;
+            this.BUT_DeleteFieldShape.Click += new System.EventHandler(this.BUT_DeleteFieldShape_Click);
             // 
             // BUT_UpdateFieldShapeList
             // 
@@ -534,25 +549,12 @@
             this.CMB_NmeaFiles.Name = "CMB_NmeaFiles";
             this.CMB_NmeaFiles.SelectedIndexChanged += new System.EventHandler(this.CMB_NmeaFiles_SelectedIndexChanged);
             // 
-            // myButton2
+            // BUT_ShapeSave
             // 
-            resources.ApplyResources(this.myButton2, "myButton2");
-            this.myButton2.Name = "myButton2";
-            this.myButton2.UseVisualStyleBackColor = true;
-            // 
-            // BUT_Test1
-            // 
-            resources.ApplyResources(this.BUT_Test1, "BUT_Test1");
-            this.BUT_Test1.Name = "BUT_Test1";
-            this.BUT_Test1.UseVisualStyleBackColor = true;
-            this.BUT_Test1.Click += new System.EventHandler(this.BUT_Test1_Click);
-            // 
-            // BUT_Test2
-            // 
-            resources.ApplyResources(this.BUT_Test2, "BUT_Test2");
-            this.BUT_Test2.Name = "BUT_Test2";
-            this.BUT_Test2.UseVisualStyleBackColor = true;
-            this.BUT_Test2.Click += new System.EventHandler(this.BUT_Test2_Click);
+            resources.ApplyResources(this.BUT_ShapeSave, "BUT_ShapeSave");
+            this.BUT_ShapeSave.Name = "BUT_ShapeSave";
+            this.BUT_ShapeSave.UseVisualStyleBackColor = true;
+            this.BUT_ShapeSave.Click += new System.EventHandler(this.BUT_ShapeSave_Click);
             // 
             // TotechGridUI
             // 
@@ -633,7 +635,7 @@
         private Controls.MyButton BUT_DeleteFieldShape;
         private Controls.MyButton BUT_UpdateFieldShapeList;
         private System.Windows.Forms.ComboBox CMB_NmeaFiles;
-        private Controls.MyButton myButton2;
+        private Controls.MyButton BUT_ShapeSave;
         private Controls.MyButton BUT_Test2;
         private Controls.MyButton BUT_Test1;
     }

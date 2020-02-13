@@ -35,9 +35,9 @@ namespace MissionPlanner.TotechGrid
         //GMapPolygon wppoly;
         private GridPlugin plugin;
         //List<PointLatLngAlt> grid;          // ルート演算結果
-        List<Locationwp> grid;          // ルート演算結果
+        List<Locationwp> current_route;          // ルート演算結果
 
-        List<PointLatLngAlt> list = new List<PointLatLngAlt>();         // ポリゴン(圃場形状)
+        List<PointLatLngAlt> current_shape = new List<PointLatLngAlt>();         // ポリゴン(圃場形状)
 
 
         List<PointLatLngAlt> gnss_list = new List<PointLatLngAlt>();    // GNSSログ
@@ -63,14 +63,14 @@ namespace MissionPlanner.TotechGrid
         {
             get
             {
-                if( list==null || list.Count <= 1 )
+                if( current_shape==null || current_shape.Count <= 1 )
                 {
                     _route_start_index = 0;
                 }
                 else
                 {
                     // ルート開始位置が形状の範囲を超えている場合調整。
-                    int polygon_size = list.Count - 1;
+                    int polygon_size = current_shape.Count - 1;
                     // 圃場形状サイズ。先頭と最後が一緒なので-1する。
                     while (_route_start_index < 0)
                         _route_start_index += polygon_size;
@@ -110,8 +110,8 @@ namespace MissionPlanner.TotechGrid
 
 
             // set and angle that is good
-            list = new List<PointLatLngAlt>();
-            plugin.Host.FPDrawnPolygon.Points.ForEach(x => { list.Add(x); });
+            current_shape = new List<PointLatLngAlt>();
+            plugin.Host.FPDrawnPolygon.Points.ForEach(x => { current_shape.Add(x); });
 #if false
             if ( list.Count > 2 )
             {
@@ -247,7 +247,7 @@ namespace MissionPlanner.TotechGrid
                 isMouseDraging = false;
 
                 if (CurrentGMapMarkerStartPos != null)
-                    CurrentGMapMarkerIndex = list.FindIndex(c => c.ToString() == CurrentGMapMarkerStartPos.ToString());
+                    CurrentGMapMarkerIndex = current_shape.FindIndex(c => c.ToString() == CurrentGMapMarkerStartPos.ToString());
             }
         }
 
@@ -282,7 +282,7 @@ namespace MissionPlanner.TotechGrid
 
                     CurrentGMapMarker.Position = pnew;
 
-                    list[CurrentGMapMarkerIndex] = new PointLatLngAlt(pnew);
+                    current_shape[CurrentGMapMarkerIndex] = new PointLatLngAlt(pnew);
                     Common_ValueChanged_Event(sender, e);
                 }
                 else // left click pan
@@ -306,10 +306,10 @@ namespace MissionPlanner.TotechGrid
         // 
         void AddDrawPolygon()
         {
-            AddDrawPolygon(list, "poly", Color.Red, 2);
+            AddDrawPolygon(current_shape, "poly", Color.Red, 2);
 
             // マーカーの描画
-            foreach (var item in list)
+            foreach (var item in current_shape)
             {
                 layerpolygons.Markers.Add(new GMarkerGoogle(item, GMarkerGoogleType.red));
             }
@@ -431,8 +431,8 @@ namespace MissionPlanner.TotechGrid
 
             // ルート演算実行
 
-            List<PointLatLngAlt> tmproute = CreateTotechGrid(list);
-            grid = RouteToCommandList(tmproute);
+            List<PointLatLngAlt> tmproute = CreateTotechGrid(current_shape);
+            current_route = RouteToCommandList(tmproute);
 
             // 形状/ルート 再描画
             ReDraw();
@@ -490,12 +490,12 @@ namespace MissionPlanner.TotechGrid
 
 
             // ルートの描画
-            AddDrawPolygon(grid, "Grid", Color.Yellow, 4);
+            AddDrawPolygon(current_route, "Grid", Color.Yellow, 4);
 
             // ルートの道のり(Distance)を表示
-            double distance = getDistanceOfRoute(grid);
+            double distance = getDistanceOfRoute(current_route);
             Console.WriteLine("Poly Dist " + distance);
-            lbl_area.Text = CalcPolygonArea(list).ToString("#") + " ㎡";
+            lbl_area.Text = CalcPolygonArea(current_shape).ToString("#") + " ㎡";
             lbl_distance.Text = distance.ToString("0.##") + " km";
 
 
@@ -513,7 +513,7 @@ namespace MissionPlanner.TotechGrid
 
 
             // map.HoldInvalidation = false;    //
-            if ( list.Count >  0 )
+            if ( current_shape.Count >  0 )
                 map.ZoomAndCenterMarkers("polygons");
             else
                 map.ZoomAndCenterRoutes("polygons");
@@ -772,7 +772,7 @@ namespace MissionPlanner.TotechGrid
 
             // (MP)Polygonファイル一覧 取得
             string search_path = Misc.GetFullPath(Consts.FieldShape_Path);
-            string search_filter = Consts.FieldShape_Filter;
+            string search_filter = "*." + Consts.FieldShape_Ext;
             try
             {
                 IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
@@ -1064,7 +1064,7 @@ namespace MissionPlanner.TotechGrid
             // totech::tPolygon ⇒ List<PointLatLngAlt>
             List<PointLatLngAlt> rslt = TotechPolygon_To_MpPointList(dest_polygon1);
 
-            list = rslt;
+            current_shape = rslt;
 
 #if false
             // 圃場形状（MPのポリゴン）をファイルに書き込む
@@ -1148,12 +1148,12 @@ namespace MissionPlanner.TotechGrid
                 CustomMessageBox.Show("Bad Grid", "Error");
             }
 #else
-            if (grid != null && grid.Count > 0)
+            if (current_route != null && current_route.Count > 0)
             {
                 MainV2.instance.FlightPlanner.quickadd = true;
 
                 // MissionPlannerに登録。
-                grid.ForEach(item =>
+                current_route.ForEach(item =>
                 {
                     plugin.Host.AddWPtoList((MAVLink.MAV_CMD)(item.id), (double)item.p1, item.p2, item.p3, item.p4, item.lng, item.lat, item.alt);
                 });
@@ -1191,7 +1191,7 @@ namespace MissionPlanner.TotechGrid
         {
             ComboBox sndr = (ComboBox)sender;
             // 選択された形状
-            list = fieldShapes[sndr.SelectedIndex ];
+            current_shape = fieldShapes[sndr.SelectedIndex ];
 
             // 圃場形状を再描画
             // 未実装
@@ -1226,12 +1226,12 @@ namespace MissionPlanner.TotechGrid
         // ルートをファイルに保存する
         private void BUT_SaveRoute_Click(object sender, EventArgs e)
         {
-            if( grid.Count == 0)
+            if( current_route.Count == 0)
                 return;
 
             // ルートの始点LatLang
-            double lat = grid[0].lat;
-            double lng = grid[0].lng;
+            double lat = current_route[0].lat;
+            double lng = current_route[0].lng;
 
 
             // 開始地点の緯度経度からファイル名を決める
@@ -1240,7 +1240,7 @@ namespace MissionPlanner.TotechGrid
 
             // 保存実行
             //Save_Polygon_to_file(grid, fname);
-            Save_Waypoints_to_file(grid, fname);
+            Save_Waypoints_to_file(current_route, fname);
 
         }
 
@@ -1257,10 +1257,10 @@ namespace MissionPlanner.TotechGrid
         {
             ComboBox sndr = (ComboBox)sender;
             // 選択されたルート
-            grid = RouteWaypoints[sndr.SelectedIndex];
+            current_route = RouteWaypoints[sndr.SelectedIndex];
 
             // 圃場形状クリア
-            list.Clear();
+            current_shape.Clear();
 
             // ルート再描画
             ReDraw();
@@ -1283,7 +1283,7 @@ namespace MissionPlanner.TotechGrid
             Update_RouteWaypoints();
 
             // 表示の更新
-            grid.Clear();
+            current_route.Clear();
             ReDraw();
 
         }
@@ -1314,13 +1314,14 @@ namespace MissionPlanner.TotechGrid
 
         }
 
-        // 「更新」ボタンが押された
+        // 「圃場形状」タブ「更新」ボタンが押された
         private void BUT_UpdateFieldShapeList_Click(object sender, EventArgs e)
         {
             // NMEAファイル一覧を更新する。
             Update_NmeaFileNames();
         }
 
+        // 「圃場形状」タブ
         // NMEAファイルが選択された
         private void CMB_NmeaFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1339,9 +1340,53 @@ namespace MissionPlanner.TotechGrid
             ReDraw();
         }
 
+        /// <summary>
+        /// 「圃場形状」タブ
+        /// 「保存」ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BUT_ShapeSave_Click(object sender, EventArgs e)
+        {
+            if (current_shape == null || current_shape.Count <= 1)
+                return;
+
+            // ファイル名 決める
+            // NMEAファイル名をベースに
+            string fname = CMB_NmeaFiles.SelectedItem.ToString() ;
+            if (fname == "") return;
+            fname = Consts.FieldShape_Path + "/" + fname + "." + Consts.FieldShape_Ext;
+            fname = Misc.GetFullPath( fname );
+
+            // 保存実行
+            Save_Polygon_to_file(current_shape, fname );
+
+        }
 
 
-#endregion "圃場形状UI"
+
+        /// <summary>
+        /// GNSSファイル削除
+        /// 「圃場形状」タブ「削除」ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BUT_DeleteFieldShape_Click(object sender, EventArgs e)
+        {
+            // 選択されたNMEAファイル名
+            int selected_index = CMB_NmeaFiles.SelectedIndex;
+            if (selected_index < 0) return;
+            string filename = NmeaFileNames[CMB_NmeaFiles.SelectedIndex];
+
+            //削除
+            System.IO.File.Delete(filename);
+
+            // NMEAファイル一覧を更新する。
+            Update_NmeaFileNames();
+
+        }
+
+        #endregion "圃場形状UI"
 
         private void BUT_Test1_Click(object sender, EventArgs e)
         {
@@ -1363,7 +1408,7 @@ namespace MissionPlanner.TotechGrid
 
 #if true
             MAVLink.MAV_MISSION_TYPE type = MAVLink.MAV_MISSION_TYPE.MISSION;
-            await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, grid);
+            await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, current_route);
 #else
             mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, commandlist,
                 (percent, status) =>
@@ -1583,8 +1628,6 @@ namespace MissionPlanner.TotechGrid
 
             return locwps;
         }
-
-
 
 
     }
