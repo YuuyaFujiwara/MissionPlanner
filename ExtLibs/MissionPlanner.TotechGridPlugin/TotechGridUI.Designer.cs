@@ -40,9 +40,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.tabRouteCalc = new System.Windows.Forms.TabPage();
-            this.BUT_Test2 = new MissionPlanner.Controls.MyButton();
-            this.BUT_Test1 = new MissionPlanner.Controls.MyButton();
-            this.BUT_PolygonRead = new MissionPlanner.Controls.MyButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.BUT_SendRoutes = new MissionPlanner.Controls.MyButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RBT_Spiral = new System.Windows.Forms.RadioButton();
@@ -59,11 +58,6 @@
             this.NUM_Distance = new System.Windows.Forms.NumericUpDown();
             this.NUM_uav_radius = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.CHK_internals = new System.Windows.Forms.CheckBox();
-            this.chk_grid = new System.Windows.Forms.CheckBox();
-            this.chk_markers = new System.Windows.Forms.CheckBox();
-            this.chk_boundary = new System.Windows.Forms.CheckBox();
             this.CMB_fieldshapes = new System.Windows.Forms.ComboBox();
             this.BUT_SaveRoute = new MissionPlanner.Controls.MyButton();
             this.BUT_Accept = new MissionPlanner.Controls.MyButton();
@@ -86,7 +80,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_margin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_uav_radius)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabRouteManage.SuspendLayout();
             this.TabRouteShape.SuspendLayout();
@@ -172,11 +165,9 @@
             // 
             // tabRouteCalc
             // 
-            this.tabRouteCalc.Controls.Add(this.BUT_Test2);
-            this.tabRouteCalc.Controls.Add(this.BUT_Test1);
-            this.tabRouteCalc.Controls.Add(this.BUT_PolygonRead);
+            this.tabRouteCalc.Controls.Add(this.label8);
+            this.tabRouteCalc.Controls.Add(this.BUT_SendRoutes);
             this.tabRouteCalc.Controls.Add(this.groupBox6);
-            this.tabRouteCalc.Controls.Add(this.groupBox4);
             this.tabRouteCalc.Controls.Add(this.CMB_fieldshapes);
             this.tabRouteCalc.Controls.Add(this.BUT_SaveRoute);
             this.tabRouteCalc.Controls.Add(this.BUT_Accept);
@@ -184,25 +175,17 @@
             this.tabRouteCalc.Name = "tabRouteCalc";
             this.tabRouteCalc.UseVisualStyleBackColor = true;
             // 
-            // BUT_Test2
+            // label8
             // 
-            resources.ApplyResources(this.BUT_Test2, "BUT_Test2");
-            this.BUT_Test2.Name = "BUT_Test2";
-            this.BUT_Test2.UseVisualStyleBackColor = true;
-            this.BUT_Test2.Click += new System.EventHandler(this.BUT_Test2_Click);
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
-            // BUT_Test1
+            // BUT_SendRoutes
             // 
-            resources.ApplyResources(this.BUT_Test1, "BUT_Test1");
-            this.BUT_Test1.Name = "BUT_Test1";
-            this.BUT_Test1.UseVisualStyleBackColor = true;
-            this.BUT_Test1.Click += new System.EventHandler(this.BUT_Test1_Click);
-            // 
-            // BUT_PolygonRead
-            // 
-            resources.ApplyResources(this.BUT_PolygonRead, "BUT_PolygonRead");
-            this.BUT_PolygonRead.Name = "BUT_PolygonRead";
-            this.BUT_PolygonRead.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.BUT_SendRoutes, "BUT_SendRoutes");
+            this.BUT_SendRoutes.Name = "BUT_SendRoutes";
+            this.BUT_SendRoutes.UseVisualStyleBackColor = true;
+            this.BUT_SendRoutes.Click += new System.EventHandler(this.BUT_SendRoutes_Click);
             // 
             // groupBox6
             // 
@@ -397,52 +380,6 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.CHK_internals);
-            this.groupBox4.Controls.Add(this.chk_grid);
-            this.groupBox4.Controls.Add(this.chk_markers);
-            this.groupBox4.Controls.Add(this.chk_boundary);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
-            // CHK_internals
-            // 
-            resources.ApplyResources(this.CHK_internals, "CHK_internals");
-            this.CHK_internals.Checked = true;
-            this.CHK_internals.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CHK_internals.Name = "CHK_internals";
-            this.CHK_internals.UseVisualStyleBackColor = true;
-            this.CHK_internals.CheckedChanged += new System.EventHandler(this.Common_ValueChanged_Event);
-            // 
-            // chk_grid
-            // 
-            resources.ApplyResources(this.chk_grid, "chk_grid");
-            this.chk_grid.Checked = true;
-            this.chk_grid.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_grid.Name = "chk_grid";
-            this.chk_grid.UseVisualStyleBackColor = true;
-            this.chk_grid.CheckedChanged += new System.EventHandler(this.Common_ValueChanged_Event);
-            // 
-            // chk_markers
-            // 
-            resources.ApplyResources(this.chk_markers, "chk_markers");
-            this.chk_markers.Checked = true;
-            this.chk_markers.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_markers.Name = "chk_markers";
-            this.chk_markers.UseVisualStyleBackColor = true;
-            this.chk_markers.CheckedChanged += new System.EventHandler(this.Common_ValueChanged_Event);
-            // 
-            // chk_boundary
-            // 
-            resources.ApplyResources(this.chk_boundary, "chk_boundary");
-            this.chk_boundary.Checked = true;
-            this.chk_boundary.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_boundary.Name = "chk_boundary";
-            this.chk_boundary.UseVisualStyleBackColor = true;
-            this.chk_boundary.CheckedChanged += new System.EventHandler(this.Common_ValueChanged_Event);
-            // 
             // CMB_fieldshapes
             // 
             this.CMB_fieldshapes.FormattingEnabled = true;
@@ -559,6 +496,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabRouteCalc.ResumeLayout(false);
+            this.tabRouteCalc.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -567,8 +505,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_margin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_uav_radius)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabRouteManage.ResumeLayout(false);
             this.tabRouteManage.PerformLayout();
@@ -599,15 +535,9 @@
         private System.Windows.Forms.NumericUpDown NUM_Distance;
         private System.Windows.Forms.NumericUpDown NUM_uav_radius;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckBox chk_grid;
-        private System.Windows.Forms.CheckBox chk_markers;
-        private System.Windows.Forms.CheckBox chk_boundary;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.CheckBox CHK_internals;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown NUM_divide_step;
-        private Controls.MyButton BUT_PolygonRead;
         private System.Windows.Forms.ComboBox CMB_fieldshapes;
         private Controls.MyButton BUT_StartNext;
         private Controls.MyButton BUT_StartPrev;
@@ -626,7 +556,7 @@
         private Controls.MyButton BUT_UpdateFieldShapeList;
         private System.Windows.Forms.ComboBox CMB_NmeaFiles;
         private Controls.MyButton BUT_ShapeSave;
-        private Controls.MyButton BUT_Test2;
-        private Controls.MyButton BUT_Test1;
+        private Controls.MyButton BUT_SendRoutes;
+        private System.Windows.Forms.Label label8;
     }
 }

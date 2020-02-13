@@ -48,7 +48,7 @@ namespace MissionPlanner.TotechGrid
         internal PointLatLng MouseDownEnd;
         internal PointLatLngAlt CurrentGMapMarkerStartPos;
         PointLatLng currentMousePosition;
-        GMapMarker marker;
+        //GMapMarker marker;
         GMapMarker CurrentGMapMarker = null;
         int CurrentGMapMarkerIndex = 0;
         bool isMouseDown = false;
@@ -516,9 +516,8 @@ namespace MissionPlanner.TotechGrid
             if ( current_shape.Count >  0 )
                 map.ZoomAndCenterMarkers("polygons");
             else
-                map.ZoomAndCenterMarkers("poly");
-            map.ZoomAndCenterRoutes("poly");
-            //            map.ZoomAndCenterRoutes("polygons");
+                map.ZoomAndCenterRoutes("polygons");    // うまく動作せず
+
 
             map.HoldInvalidation = false;    //
             map.Refresh();
@@ -1087,7 +1086,7 @@ namespace MissionPlanner.TotechGrid
 
 
         //「完了」ボタン 
-        private async void BUT_Accept_Click(object sender, EventArgs e)
+        private void BUT_Accept_Click(object sender, EventArgs e)
         {
 #if false
             string tag2_bkup = "";
@@ -1388,7 +1387,8 @@ namespace MissionPlanner.TotechGrid
         }
 
 
-        private async void BUT_Test2_Click(object sender, EventArgs e)
+
+        private async void BUT_SendRoutes_Click(object sender, EventArgs e)
         {
             //
             // ルート送信するテスト
@@ -1591,7 +1591,7 @@ namespace MissionPlanner.TotechGrid
                     tmp_wp2.Set(plla.Lat, plla.Lng, plla.Alt, (ushort)MAVLink.MAV_CMD.WAYPOINT);
                     if (plla.Tag == "M")
                     {
-                        if (CHK_internals.Checked)
+                        //if (CHK_internals.Checked)// チェックボックス削除
                         {
                             // Listに追加
                             locwps.Add(tmp_wp2);
@@ -1620,7 +1620,6 @@ namespace MissionPlanner.TotechGrid
 
             return locwps;
         }
-
 
     }
 }
