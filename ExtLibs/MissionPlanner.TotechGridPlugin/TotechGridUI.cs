@@ -1388,33 +1388,36 @@ namespace MissionPlanner.TotechGrid
 
 
 
+        /// <summary>
+        /// MOMIMAKI_RT_CTRL（籾播きルート制御）パラメータ値定義
+        /// </summary>
+        private enum MOMIMAKI_ROUTET_CONTROL_PARAM
+        {
+            DONE = -1,
+            UNDEFINED = 0,
+            CLEAR,
+            UPDATED,            // ルート転送済み
+
+        }
+
+
+        /// <summary>
+        /// 「ルート転送」ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BUT_SendRoutes_Click(object sender, EventArgs e)
         {
-            //
-            // ルート送信するテスト
-            //
 
-
-            // get the command list from List<PointLatLngAlt>
-            //List<Locationwp> commandlist = RouteToCommandList(grid);
-
-#if true
+            // 現在選択されているルートを転送する。
             MAVLink.MAV_MISSION_TYPE type = MAVLink.MAV_MISSION_TYPE.MISSION;
             await mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, current_route);
-#else
-            mav_mission.upload(MainV2.comPort, MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, type, commandlist,
-                (percent, status) =>
-                {
-                    if (sender.doWorkArgs.CancelRequested)
-                    {
-                        sender.doWorkArgs.CancelAcknowledged = true;
-                        sender.doWorkArgs.ErrorMessage = "User Canceled";
-                        throw new Exception("User Canceled");
-                    }
 
-                    sender.UpdateProgressAndStatus((int)(percent * 0.95), status);
-                }).ConfigureAwait(false).GetAwaiter().GetResult();
-#endif
+            // ルート転造済みを通知
+            // （MOMIMAKI_RT_CTRLパラメータ経由でDronekit pythonコードへ）
+            MainV2.comPort.setParam("MOMIMAKI_RT_CTRL", (float)MOMIMAKI_ROUTET_CONTROL_PARAM.UPDATED );
+
+
 
 
 
@@ -1620,6 +1623,9 @@ namespace MissionPlanner.TotechGrid
 
             return locwps;
         }
+
+
+
 
     }
 }
