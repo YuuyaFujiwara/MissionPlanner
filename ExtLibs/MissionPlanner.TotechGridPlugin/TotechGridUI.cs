@@ -1592,7 +1592,7 @@ namespace MissionPlanner.TotechGrid
         {
             // 確認ダイアログ表示
             int rslt = CustomMessageBox.Show("転送済みルートを全て削除します。", "Totech Grid", MessageBoxButtons.OKCancel);
-            if ((int)DialogResult.Yes != rslt)
+            if ((int)DialogResult.OK != rslt)
                 return;
 
             // MOMIMAKI_RT_CTRLに9999書き込み。
