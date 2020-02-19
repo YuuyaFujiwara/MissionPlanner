@@ -1089,68 +1089,7 @@ namespace MissionPlanner.TotechGrid
         private void BUT_Accept_Click(object sender, EventArgs e)
         {
 #if false
-            string tag2_bkup = "";
-
-
-            if (grid != null && grid.Count > 0)
-            {
-                MainV2.instance.FlightPlanner.quickadd = true;
-
-                PointLatLngAlt lastpnt = PointLatLngAlt.Zero;
-
-
-                grid.ForEach(plla =>
-                {
-                    // 籾播き状態変化したなら、籾播き、籾送り制御
-                    // Ardupilot側修正により、MAV_CMD.USER_5にて籾播き制御
-                    if ( tag2_bkup != plla.Tag2 )
-                    {
-                        if( (plla.Tag2 == "START"   ) ||
-                            (plla.Tag2 == "BEGIN"   ) ||
-                            (plla.Tag2 == "R_TURN"  ) ||
-                            (plla.Tag2 == "L_TURN"  ) ||
-                            (plla.Tag2 == "RETURN"  ) )
-                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.USER_5, 1, 0, -1, -1, plla.Lng, plla.Lat, plla.Alt);// 拡散ON／送りOFF
-
-                        else if((plla.Tag2 == "STRAIGHT") ||
-                                (plla.Tag2 == "STRAIGHT2") )
-                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.USER_5, 1, 1, -1, -1, plla.Lng, plla.Lat, plla.Alt);// 拡散ON／送りON
-
-                        else if((plla.Tag2 == "END"         ) ||
-                                (plla.Tag2 == "OUTOFRANGE"  ) ||
-                                (plla.Tag2 == "UNDEFINED"   ))
-                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.USER_5, 0, 0, -1, -1, plla.Lng, plla.Lat, plla.Alt);// 拡散OFF／送りOFF
-
-                            tag2_bkup = plla.Tag2;
-                    }
-
-
-                    if (plla.Tag == "M")
-                    {
-                        if (CHK_internals.Checked)
-                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, plla.Lng, plla.Lat, plla.Alt);
-                    }
-                    else
-                    {
-                        if (!(plla.Lat == lastpnt.Lat && plla.Lng == lastpnt.Lng && plla.Alt == lastpnt.Alt))
-                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, plla.Lng, plla.Lat, plla.Alt);
-
-                        lastpnt = plla;
-                    }
-                });
-                            MainV2.instance.FlightPlanner.quickadd = false;
-
-                MainV2.instance.FlightPlanner.writeKML();
-
-                savesettings();
-
-                this.Close();
-            }
-            else
-            {
-                CustomMessageBox.Show("Bad Grid", "Error");
-            }
-#else
+            // MissionPlanner本体にルートを送る
             if (current_route != null && current_route.Count > 0)
             {
                 MainV2.instance.FlightPlanner.quickadd = true;
@@ -1173,7 +1112,12 @@ namespace MissionPlanner.TotechGrid
             {
                 CustomMessageBox.Show("Bad Grid", "Error");
             }
+#else
+            // 設定を保存して終了。ルートは送らない。
+            savesettings();
+            this.Close();
 #endif
+
         }
 
 
@@ -1377,7 +1321,7 @@ namespace MissionPlanner.TotechGrid
 
         }
 
-        #endregion "圃場形状UI"
+#endregion "圃場形状UI"
 
         private void BUT_Test1_Click(object sender, EventArgs e)
         {
