@@ -1568,9 +1568,24 @@ namespace MissionPlanner.TotechGrid
             return locwps;
         }
 
+        /// <summary>
+        /// 機体に転送済みのルートをクリアする。
+        /// 削除処理本体はdronekit-pythonで行う。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BUT_Clear_Sended_Click(object sender, EventArgs e)
+        {
+            // 確認ダイアログ表示
+            int rslt = CustomMessageBox.Show("転送済みルートを全て削除します。", "Totech Grid", MessageBoxButtons.OKCancel);
+            if ((int)DialogResult.Yes != rslt)
+                return;
 
+            // MOMIMAKI_RT_CTRLに9999書き込み。
+            // このパラメータ書き込みをdronekit-pythonで受け取って処理すること。
+            MainV2.comPort.setParam("MOMIMAKI_RT_CTRL", (float)9999);
 
-
+        }
     }
 }
 
