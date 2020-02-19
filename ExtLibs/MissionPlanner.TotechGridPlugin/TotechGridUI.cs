@@ -1296,9 +1296,21 @@ namespace MissionPlanner.TotechGrid
             // 保存実行
             Save_Polygon_to_file(current_shape, fname );
 
+            // 圃場形状一覧更新
+            Update_FieldShapes();
         }
 
 
+        /// <summary>
+        /// 圃場形状一覧更新ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BUT_FieldShapeList_Update_Click(object sender, EventArgs e)
+        {
+            // 圃場形状一覧更新
+            Update_FieldShapes();
+        }
 
         /// <summary>
         /// GNSSファイル削除
@@ -1586,6 +1598,8 @@ namespace MissionPlanner.TotechGrid
             MainV2.comPort.setParam("MOMIMAKI_RT_CTRL", (float)9999);
 
         }
+
+
     }
 }
 
