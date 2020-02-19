@@ -776,7 +776,9 @@ namespace MissionPlanner.TotechGrid
             string search_filter = "*." + Consts.FieldShape_Ext;
             try
             {
-                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
+                // SearchOption opt = SearchOption.AllDirectories; // サブフォルダも検索対象
+                SearchOption opt = SearchOption.TopDirectoryOnly; // このフォルダのみ
+                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, opt );
                 foreach (string fname in files)
                 {
 #if false
@@ -985,7 +987,7 @@ namespace MissionPlanner.TotechGrid
             string search_filter = Consts.RouteFile_Filter;
             try
             {
-                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
+                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, SearchOption.TopDirectoryOnly );
                 foreach (string fname in files)
                 {
                     List<Locationwp> readbuff = Load_Waypoints_to_file(fname);
@@ -1238,7 +1240,7 @@ namespace MissionPlanner.TotechGrid
             string search_filter = Consts.GnssLog_Filter;
             try
             {
-                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, System.IO.SearchOption.AllDirectories);
+                IEnumerable<string> files = System.IO.Directory.EnumerateFiles(search_path, search_filter, SearchOption.TopDirectoryOnly );
                 foreach (string fname in files)
                 {
                     NmeaFileNames.Add(fname);
