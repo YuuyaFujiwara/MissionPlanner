@@ -72,6 +72,7 @@
             this.BUT_UpdateFieldShapeList = new MissionPlanner.Controls.MyButton();
             this.CMB_NmeaFiles = new System.Windows.Forms.ComboBox();
             this.BUT_ShapeSave = new MissionPlanner.Controls.MyButton();
+            this.BUT_Clear_Sended = new MissionPlanner.Controls.MyButton();
             this.groupBox5.SuspendLayout();
             this.tabRouteCalc.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -165,6 +166,7 @@
             // 
             // tabRouteCalc
             // 
+            this.tabRouteCalc.Controls.Add(this.BUT_Clear_Sended);
             this.tabRouteCalc.Controls.Add(this.label8);
             this.tabRouteCalc.Controls.Add(this.BUT_SendRoutes);
             this.tabRouteCalc.Controls.Add(this.groupBox6);
@@ -484,6 +486,13 @@
             this.BUT_ShapeSave.UseVisualStyleBackColor = true;
             this.BUT_ShapeSave.Click += new System.EventHandler(this.BUT_ShapeSave_Click);
             // 
+            // BUT_Clear_Sended
+            // 
+            resources.ApplyResources(this.BUT_Clear_Sended, "BUT_Clear_Sended");
+            this.BUT_Clear_Sended.Name = "BUT_Clear_Sended";
+            this.BUT_Clear_Sended.UseVisualStyleBackColor = true;
+            this.BUT_Clear_Sended.Click += new System.EventHandler(this.BUT_Clear_Sended_Click);
+            // 
             // TotechGridUI
             // 
             resources.ApplyResources(this, "$this");
@@ -558,5 +567,6 @@
         private Controls.MyButton BUT_ShapeSave;
         private Controls.MyButton BUT_SendRoutes;
         private System.Windows.Forms.Label label8;
+        private Controls.MyButton BUT_Clear_Sended;
     }
 }
